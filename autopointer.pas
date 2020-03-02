@@ -58,6 +58,9 @@ type
 
       procedure SetInstance(AValue: T );
 
+    public type
+      TAutoClassType = T;
+
     public
       class operator Finalize( var aRec: TAutoPointer < T >);
       {$IFDEF IMPLICIT}
@@ -66,7 +69,7 @@ type
       {$ENDIF}
       class operator Copy( constref aSrc: TAutoPointer < T >; var aDst: TAutoPointer < T > );
 
-      property Instance: T read FInstance write SetInstance;
+      property I: T read FInstance write SetInstance;
     end;
 
   //================================================================================
@@ -91,6 +94,9 @@ type
       procedure AddPointer( Pointer: PAutoPointer );
       procedure RemovePointer( Pointer: PAutoPointer );
 
+    public type
+      TAutoClassType = T;
+
     public
       {$IFDEF IMPLICIT}
       class operator Implicit( var AValue: T ): TAutoContainer < T >;
@@ -100,8 +106,9 @@ type
       {$ENDIF}
       class operator Initialize( var aRec: TAutoContainer < T >);
       class operator Finalize( var aRec: TAutoContainer < T >);
+      class operator Equal( var aRec, bRec: TAutoContainer < T >): Boolean;
 
-      property Instance: T read FInstance write SetInstance;
+      property I: T read FInstance write SetInstance;
       property AutoPointers: TFPGList < PAutoPointer > read FAutoPointers;
   end;
 
@@ -141,12 +148,12 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);' );
   {$ENDIF}
-  if ( Assigned( FInstance ) and Assigned( FInstance.Owner )) then
-    FInstance.Owner.RemovePointer( @Self );
+  if ( Assigned( FInstance ) and Assigned( FInstance.FOwner )) then
+    FInstance.FOwner.RemovePointer( @Self );
 
   FInstance:= AValue;
-  if ( Assigned( FInstance ) and Assigned( FInstance.Owner )) then
-    FInstance.Owner.AddPointer( @Self );
+  if ( Assigned( FInstance ) and Assigned( FInstance.FOwner )) then
+    FInstance.FOwner.AddPointer( @Self );
 end;
 
 class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);
@@ -154,7 +161,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);' );
   {$ENDIF}
-  aRec.Instance:= default( T );
+  aRec.I:= default( T );
 end;
 
 {$IFDEF IMPLICIT}
@@ -163,7 +170,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer < T >.Implicit( AValue: T ): TAutoPointer < T >;' );
   {$ENDIF}
-  Result.Instance:= AValue;
+  Result.I:= AValue;
 end;
 
 class operator TAutoPointer < T >.Implicit( AValue: TAutoPointer < T >): T;
@@ -171,7 +178,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer < T >.Implicit( AValue: TAutoPointer < T >): T;' );
   {$ENDIF}
-  Result:= AValue.Instance;
+  Result:= AValue.I;
 end;
 
 class operator TAutoContainer<T>.Copy(constref aSrc: TAutoContainer<T>; var aDst: TAutoContainer<T>);
@@ -189,7 +196,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer < T >.Copy( constref aSrc: TAutoPointer < T >; var aDst: TAutoPointer < T > );' );
   {$ENDIF}
-  aDst.Instance:= aSrc.Instance;
+  aDst.I:= aSrc.I;
 end;
 
 
@@ -205,7 +212,7 @@ begin
   if ( AValue = FInstance ) then
     exit;
   for i:= FAutoPointers.Count - 1 downto 0 do
-    FAutoPointers[ i ]^.Instance:= AValue;
+    FAutoPointers[ i ]^.I:= AValue;
 
   if ( Assigned( FInstance ) and ( FInstance.Owner = @Self )) then begin
     FInstance.FOwner:= nil;
@@ -231,8 +238,14 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoContainer < T >.Finalize(var aRec: TAutoContainer<T>);' );
   {$ENDIF}
-  if ( Assigned( aRec.Instance ) and ( aRec.Instance.Owner = @aRec )) then
+  if ( Assigned( aRec.I ) and ( aRec.I.Owner = @aRec )) then
     aRec.Destroy;
+end;
+
+class operator TAutoContainer<T>.Equal(var aRec, bRec: TAutoContainer<T>
+  ): Boolean;
+begin
+  Result:= @aRec = @bRec;
 end;
 
 
@@ -246,7 +259,7 @@ begin
   WriteLn( 'procedure TAutoContainer < T >.Destroy;' );
   {$ENDIF}
   for i:= FAutoPointers.Count - 1 downto 0 do
-    FAutoPointers[ i ]^.Instance:= default( T );
+    FAutoPointers[ i ]^.I:= default( T );
   if ( FAutoPointers.Count > 0 ) then
     raise Exception.Create( 'Error 1' );
   FAutoPointers.Free;
@@ -278,7 +291,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoContainer < T >.Implicit( AValue: T ): TAutoContainer < T >;' );
   {$ENDIF}
-  Result.Instance:= AValue;
+  Result.I:= AValue;
 end;
 
 class operator TAutoContainer < T >.Implicit( var AValue: TAutoContainer < T >): T;
@@ -286,7 +299,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoContainer < T >.Implicit( AValue: TAutoContainer < T >): T;' );
   {$ENDIF}
-  Result:= AValue.Instance;
+  Result:= AValue.I;
 end;
 
 class operator TAutoContainer < T >.Implicit( AValue: TAutoContainer < T >): TAutoPointer < T >;
@@ -294,7 +307,7 @@ begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoContainer < T >.Implicit( AValue: TAutoContainer < T >): TAutoPointer < T >;' );
   {$ENDIF}
-  Result.Instance:= AValue.Instance;
+  Result.I:= AValue.Instance;
 end;
 {$ENDIF}
 
@@ -306,7 +319,7 @@ begin
   _Owner:= Owner;
   if ( Assigned( _Owner )) then begin
     FOwner:= nil;
-    _Owner.Instance:= nil;
+    _Owner.I:= nil;
   end;
 end;
 

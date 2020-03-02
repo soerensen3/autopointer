@@ -61,7 +61,6 @@ type
     public type
       TAutoType = T;
 
-
     public
       property I: T read FInstance write SetInstance;
 
@@ -107,6 +106,18 @@ type
   end;
 
   { TAutoClassMultiContainer }
+
+  //================================================================================
+  //** TAutoClassMultiContainer and TAutoClassSingleContainer
+  //**------------------------------------------------------------------------------
+  //** TAutoClassMultiContainer and TAutoClassSingleContainer keep track of
+  //** pointers pointing to the same instance of a TAutoClass.
+  //** The difference between multi and single containers is that an instance
+  //** instance is freed as well. If you store a container in an instance of
+  //** another class your instance of TAutoClass will not get freed until the
+  //** instance that keeps the container is freed.
+  //** Never copy a container as this will result in undefined behaviour.
+  //================================================================================
 
   TAutoClassMultiContainer = class ( TAutoClass )
     private
