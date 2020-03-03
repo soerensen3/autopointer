@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="11">
+      <Unit0>
+        <Filename Value="autopointer_implicit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="16"/>
+        <CursorPos X="26" Y="27"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../autopointer.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="75"/>
+        <CursorPos X="49" Y="93"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/rtti.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="429"/>
+        <CursorPos Y="452"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../streamable/p3d.utils.autoclass.inc"/>
+        <UnitName Value="autoobj"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="41" Y="90"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../p3d/pascal3d/src/pascal3d.utils/p3d.utils.streamable.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="583"/>
+        <CursorPos X="2" Y="605"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="autopointer.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/except.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="177"/>
+        <CursorPos Y="200"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/x86_64/setjump.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="37"/>
+        <CursorPos Y="60"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/objpas.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1125"/>
+        <CursorPos Y="1078"/>
+        <UsageCount Value="10"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/x86_64/x86_64.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="140"/>
+        <CursorPos Y="153"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/objpash.inc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="192"/>
+        <CursorPos X="23" Y="206"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit10>
+    </Units>
+    <JumpHistory Count="17" HistoryIndex="16">
+      <Position1>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="18" Column="42" TopLine="7"/>
+      </Position1>
+      <Position2>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="10"/>
+      </Position2>
+      <Position3>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="55" Column="28" TopLine="28"/>
+      </Position3>
+      <Position4>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="76" Column="22" TopLine="53"/>
+      </Position4>
+      <Position5>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="52" Column="16" TopLine="36"/>
+      </Position5>
+      <Position6>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="44" Column="32" TopLine="30"/>
+      </Position6>
+      <Position7>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="52" Column="33" TopLine="38"/>
+      </Position7>
+      <Position8>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="74" Column="40" TopLine="54"/>
+      </Position8>
+      <Position9>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="73" Column="65" TopLine="54"/>
+      </Position9>
+      <Position10>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="36" Column="3" TopLine="22"/>
+      </Position10>
+      <Position11>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="11" Column="3"/>
+      </Position11>
+      <Position12>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="79" Column="87" TopLine="54"/>
+      </Position12>
+      <Position13>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="17" Column="2"/>
+      </Position13>
+      <Position14>
+        <Filename Value="autopointer_implicit.pas"/>
+        <Caret Line="61" Column="34" TopLine="46"/>
+      </Position14>
+      <Position15>
+        <Filename Value="../../streamable/p3d.utils.autoclass.inc"/>
+        <Caret Line="38" Column="15" TopLine="19"/>
+      </Position15>
+      <Position16>
+        <Filename Value="../../streamable/p3d.utils.autoclass.inc"/>
+        <Caret Line="78" Column="27" TopLine="61"/>
+      </Position16>
+      <Position17>
+        <Filename Value="../../streamable/p3d.utils.autoclass.inc"/>
+        <Caret Line="84" Column="18" TopLine="70"/>
+      </Position17>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

@@ -8,7 +8,7 @@ unit AutoPtr;
 interface
 
 uses
-  autopointer, autoobj, LazarusPackageIntf;
+  autopointer, autoobj, autolist, LazarusPackageIntf;
 
 implementation
 

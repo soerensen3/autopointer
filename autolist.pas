@@ -12,11 +12,11 @@ uses
 
 
 type
-  TP3DListOnChangeAction = ( actAdd, actDelete, actExtract, actClear, actAssignBefore, actAssignAfter, actSet );
+  TListOnChangeAction = ( actAdd, actDelete, actExtract, actClear, actAssignBefore, actAssignAfter, actSet );
 
   { gP3DListEnumerator }
 
-  gP3DListEnumerator < T > = class
+  gListEnumerator < T > = class
     private type
       TMoveNext = function ( var AIndex: Integer; out AItem: T ): Boolean of object;
     private
@@ -31,18 +31,18 @@ type
       property CurrentIdx: Integer read FCurrentIdx;
   end;
 
-  { gP3DAutoList }
+  { gAutoList }
 
-  gP3DAutoList < TManagedType, T > = class ( TObject )
+  gAutoList < TManagedType, T > = class ( TObject )
     type
-      TItemList = gP3DAutoList < TManagedType, T >;
-      TItemListOnChangeEvent = procedure ( Sender: TItemList; ItemIndex: Integer; Action: TP3DListOnChangeAction ) of object;
+      TItemList = gAutoList < TManagedType, T >;
+      TItemListOnChangeEvent = procedure ( Sender: TItemList; ItemIndex: Integer; Action: TListOnChangeAction ) of object;
       TItemListOnSetEvent = function ( Sender: TObject; ItemIndex: Integer; AValue: T ): Boolean of object;
 
       PManagedType = ^TManagedType;
       TItemArray = array [ 0..( MAXINT shr 8 )] of PManagedType;
       pItemArray = ^TItemArray;
-      TListEnumerator = gP3DListEnumerator < TManagedType >;
+      TListEnumerator = gListEnumerator < TManagedType >;
 
     private
       FItems: pItemArray;
@@ -84,8 +84,8 @@ type
       property OnSet: TItemListOnSetEvent read FOnSet write FOnSet;
   end;
 
-  gP3DAutoClassContainerList < T: TAutoClassContained > = class( gP3DAutoList < TAutoContainer < T >, T >);
-  gP3DAutoClassPointerList < T: TAutoClassContained > = class( gP3DAutoList < TAutoPointer < T >, T >);
+  gAutoClassContainerList < T: TAutoClassContained > = class( gAutoList < TAutoContainer < T >, T >);
+  gAutoClassPointerList < T: TAutoClassContained > = class( gAutoList < TAutoPointer < T >, T >);
 
 
 
@@ -93,7 +93,7 @@ implementation
 
 { gP3DListEnumerator }
 
-constructor gP3DListEnumerator < T >.Create(AStartIndex: Integer; AMoveNext: TMoveNext);
+constructor gListEnumerator < T >.Create(AStartIndex: Integer; AMoveNext: TMoveNext);
 begin
   inherited Create;
   FillByte( FCurrent, SizeOf( FCurrent ), 0 );
@@ -101,12 +101,12 @@ begin
   FMoveNext:= AMoveNext;
 end;
 
-function gP3DListEnumerator < T >.MoveNext: Boolean;
+function gListEnumerator < T >.MoveNext: Boolean;
 begin
   Result:= FMoveNext( FCurrentIdx, FCurrent );
 end;
 
-function gP3DAutoList < TManagedType, T >.Add( Item: T ): Integer;
+function gAutoList < TManagedType, T >.Add( Item: T ): Integer;
 begin
   if ( FCount = FCapacity ) then
     Grow;
@@ -120,7 +120,7 @@ begin
     OnChange( Self, Result, actAdd );
 end;
 
-function gP3DAutoList < TManagedType, T >.AddArray( Items: array of T ): Integer;
+function gAutoList < TManagedType, T >.AddArray( Items: array of T ): Integer;
 var
   i: Integer;
 begin
@@ -129,12 +129,12 @@ begin
     Add( Items[ I ]);
 end;
 
-function gP3DAutoList < TManagedType, T >.GetEnumerator(): TListEnumerator;
+function gAutoList < TManagedType, T >.GetEnumerator(): TListEnumerator;
 begin
   Result:= TListEnumerator.Create( -1, MoveNext );
 end;
 
-function gP3DAutoList < TManagedType, T >.IndexOf(var Item: T): Integer;
+function gAutoList < TManagedType, T >.IndexOf(var Item: T): Integer;
 var
   i: Integer;
 begin
@@ -146,7 +146,7 @@ begin
     end;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.Clear;
+procedure gAutoList < TManagedType, T >.Clear;
 var
   i: Integer;
 begin
@@ -162,7 +162,7 @@ begin
   FItems:= nil;
 end;
 
-constructor gP3DAutoList < TManagedType, T >.Create;
+constructor gAutoList < TManagedType, T >.Create;
 begin
   inherited Create;
   FItems:= nil;
@@ -172,7 +172,7 @@ begin
   FSizeLimit:= SizeOf( TItemArray ) div SizeOf( T );
 end;
 
-procedure gP3DAutoList < TManagedType, T >.Delete( Index: Integer );
+procedure gAutoList < TManagedType, T >.Delete( Index: Integer );
 begin
   if ( Assigned( OnChange )) then
     OnChange( Self, Index, actDelete );
@@ -183,7 +183,7 @@ begin
   FCount:= FCount - 1;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.Remove( Item: T );
+procedure gAutoList < TManagedType, T >.Remove( Item: T );
 var
   Index: Integer;
 begin
@@ -192,25 +192,25 @@ begin
     Delete( Index );
 end;
 
-destructor gP3DAutoList < TManagedType, T >.Destroy;
+destructor gAutoList < TManagedType, T >.Destroy;
 begin
   Clear;
   inherited;
 end;
 
-function gP3DAutoList < TManagedType, T >.GetItem( Index: Integer ): T;
+function gAutoList < TManagedType, T >.GetItem( Index: Integer ): T;
 begin
   if (( Index >= 0 ) and ( Index < FCount )) then
     Result:= FItems^[ Index ].I;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.Grow;
+procedure gAutoList < TManagedType, T >.Grow;
 begin
   FCapacity:= FCapacity + FGrowth;
   ReallocMem( FItems, FCapacity * SizeOf( T ));
 end;
 
-function gP3DAutoList < TManagedType, T >.PtrTo(Index: Integer): PManagedType;
+function gAutoList < TManagedType, T >.PtrTo(Index: Integer): PManagedType;
 begin
   if ( Count > Index ) then
     Result:= FItems^[ Index ]
@@ -218,7 +218,7 @@ begin
     Result:= nil;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.SetCount(AValue: Integer);
+procedure gAutoList < TManagedType, T >.SetCount(AValue: Integer);
 begin
   FCount:= AValue;    // TODO: call dispose
   while ( FCapacity < FCount ) do
@@ -227,7 +227,7 @@ begin
     Shrink;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.SetCapacity( const Value: Integer );
+procedure gAutoList < TManagedType, T >.SetCapacity( const Value: Integer );
 begin
   FCapacity:= Value;
   if ( FCapacity < FCount ) then
@@ -235,12 +235,12 @@ begin
   ReallocMem( FItems, FCapacity * SizeOf( T ));
 end;
 
-procedure gP3DAutoList < TManagedType, T >.SetGrowth(const Value: Integer);
+procedure gAutoList < TManagedType, T >.SetGrowth(const Value: Integer);
 begin
   FGrowth:= Math.Max( 16, Value ); // Minimum Value 16
 end;
 
-procedure gP3DAutoList < TManagedType, T >.SetItem( Index: Integer; const AValue: T );
+procedure gAutoList < TManagedType, T >.SetItem( Index: Integer; const AValue: T );
 begin
   if ( Assigned( OnSet ) and ( not OnSet( Self, Index, AValue ))) then  // TODO: call dispose
     exit;
@@ -251,13 +251,13 @@ begin
   FItems^[ Index ].I:= AValue;
 end;
 
-procedure gP3DAutoList < TManagedType, T >.Shrink;
+procedure gAutoList < TManagedType, T >.Shrink;
 begin
   FCapacity:= Math.Max( 0, FCapacity - FGrowth );
   ReallocMem( FItems, FCapacity * SizeOf( T ));
 end;
 
-function gP3DAutoList < TManagedType, T >.MoveNext( var AIndex: Integer; out AItem: TManagedType ): Boolean;
+function gAutoList < TManagedType, T >.MoveNext( var AIndex: Integer; out AItem: TManagedType ): Boolean;
 begin
   Inc( AIndex );
   Result:= AIndex < Count;

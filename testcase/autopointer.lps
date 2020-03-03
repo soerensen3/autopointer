@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="autopointer.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="25" Y="68"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../autopointer.pas"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="34" Y="123"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/rtti.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="387"/>
+        <CursorPos Y="400"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../autoobj.pas"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="20" Y="228"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../p3d/pascal3d/src/pascal3d.utils/p3d.utils.streamable.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="211"/>
+        <CursorPos X="7" Y="95"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="22" HistoryIndex="21">
+      <Position1>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="142" TopLine="128"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="175" TopLine="161"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/rtti.inc"/>
+        <Caret Line="400" TopLine="387"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="244" TopLine="230"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="277" TopLine="263"/>
+      </Position5>
+      <Position6>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="142" TopLine="128"/>
+      </Position6>
+      <Position7>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="244" TopLine="230"/>
+      </Position7>
+      <Position8>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="277" TopLine="263"/>
+      </Position8>
+      <Position9>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="142" TopLine="128"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="244" TopLine="230"/>
+      </Position10>
+      <Position11>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="142" TopLine="128"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="277" TopLine="263"/>
+      </Position12>
+      <Position13>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="244" TopLine="230"/>
+      </Position13>
+      <Position14>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="277" TopLine="263"/>
+      </Position14>
+      <Position15>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="142" TopLine="128"/>
+      </Position15>
+      <Position16>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="62" Column="45" TopLine="46"/>
+      </Position16>
+      <Position17>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="159" Column="3" TopLine="151"/>
+      </Position17>
+      <Position18>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="63" Column="9" TopLine="48"/>
+      </Position18>
+      <Position19>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="154" Column="2" TopLine="152"/>
+      </Position19>
+      <Position20>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="168" Column="7" TopLine="143"/>
+      </Position20>
+      <Position21>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="94" Column="9" TopLine="78"/>
+      </Position21>
+      <Position22>
+        <Filename Value="../autopointer.pas"/>
+        <Caret Line="278" Column="3" TopLine="255"/>
+      </Position22>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

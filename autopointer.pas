@@ -143,7 +143,7 @@ implementation
 
 { TAutoPointer }
 
-procedure TAutoPointer <T: TAutoClassContained>.SetInstance(AValue: T);
+procedure TAutoPointer <T>.SetInstance(AValue: T);
 begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);' );
@@ -156,7 +156,7 @@ begin
     FInstance.FOwner.AddPointer( @Self );
 end;
 
-class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);
+class operator TAutoPointer <T>.Finalize(var aRec: TAutoPointer<T>);
 begin
   {$IFDEF DEBUG}
   WriteLn( 'class operator TAutoPointer <T: TAutoClassContained>.Finalize(var aRec: TAutoPointer<T>);' );

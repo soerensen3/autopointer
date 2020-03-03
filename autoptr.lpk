@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
-  <Package Version="4">
+  <Package Version="5">
     <Name Value="AutoPtr"/>
     <Type Value="RunAndDesignTime"/>
     <CompilerOptions>
@@ -14,7 +14,7 @@
         </Optimizations>
       </CodeGeneration>
     </CompilerOptions>
-    <Files Count="2">
+    <Files Count="3">
       <Item1>
         <Filename Value="autopointer.pas"/>
         <UnitName Value="autopointer"/>
@@ -23,6 +23,10 @@
         <Filename Value="autoobj.pas"/>
         <UnitName Value="autoobj"/>
       </Item2>
+      <Item3>
+        <Filename Value="autolist.pas"/>
+        <UnitName Value="autolist"/>
+      </Item3>
     </Files>
     <RequiredPkgs Count="1">
       <Item1>
